@@ -34,6 +34,10 @@ var ones = lazyseq.cons(1, function () { return ones; });
 console.log(ones === ones.tail()); // true!
 ```
 
+## Why?
+
+This package is originally made to optimise shrink operations in [jsverify](http://jsverify.github.io/), a property-based testing library.
+
 ## API
 
 
@@ -91,7 +95,7 @@ console.log(ones === ones.tail()); // true!
 
 ## Release History
 
-- **XXX** *2014-12-xx* First release
+- **0.0.1** &mdash; *2014-12-20* &mdash; Initial release
 
 ## Contributing
 

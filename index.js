@@ -35,6 +35,10 @@
   console.log(ones === ones.tail()); // true!
   ```
 
+  ## Why?
+
+  This package is originally made to optimise shrink operations in [jsverify](http://jsverify.github.io/), a property-based testing library.
+
   ## API
 */
 

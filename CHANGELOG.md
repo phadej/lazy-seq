@@ -1,3 +1,3 @@
 ## Release History
 
-- **XXX** *2014-12-xx* First release
+- **0.0.1** &mdash; *2014-12-20* &mdash; Initial release
