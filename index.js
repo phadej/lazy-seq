@@ -180,7 +180,7 @@ Cons.prototype.toArray = function () {
 Cons.prototype.fold = function consFold(x, f) {
   var self = this;
   return f(this.headValue, function () {
-    return self.tailValue.fold(x, f);
+    return self.tail().fold(x, f);
   });
 };
 
@@ -301,11 +301,33 @@ function iterate(x, f) {
   });
 }
 
+/**
+  - *fold : (seq : Seq a | Array a, z : b, f : (a, () → b) → b) : b* &mdash; polymorphic version of fold. Works with arrays too.
+*/
+function listFold(list, z, f, n) {
+  if (n < list.length) {
+    return f(list[n], function () {
+      return listFold(list, z, f, n + 1);
+    });
+  } else {
+    return z;
+  }
+}
+
+function fold(list, z, f) {
+  if (Array.isArray(list)) {
+    return listFold(list, z, f, 0);
+  } else {
+    return list.fold(z, f);
+  }
+}
+
 module.exports = {
   nil: nil,
   cons: cons,
   fromArray: fromArray,
   iterate: iterate,
+  fold: fold,
 };
 
 /// plain CHANGELOG.md

@@ -178,3 +178,14 @@ describe("append", function () {
     return _.isEqual(arr, seq.toArray());
   });
 });
+
+describe("fold", function () {
+  jsc.property("fold(arr) ≈ fold(seq)", "array nat", "nat", function (arr, z) {
+    var f = function (x, acc) {
+      return x - acc();
+    };
+    var foldedArr = lazyseq.fold(arr, z, f);
+    var foldedSeq = lazyseq.fold(lazyseq.fromArray(arr), z, f);
+    return foldedArr === foldedSeq;
+  });
+});
