@@ -93,8 +93,12 @@ This package is originally made to optimise shrink operations in [jsverify](http
 - *iterate : (x : a, f : a → a) → Seq a* &mdash; Create an infinite sequence of repeated applications of `f` to `x`: *x, f(x), f(f(x))&hellip;*.
 
 
+- *fold : (seq : Seq a | Array a, z : b, f : (a, () → b) → b) : b* &mdash; polymorphic version of fold. Works with arrays too.
+
+
 ## Release History
 
+- **0.0.2** &mdash; *2014-12-20* &mdash; Fixed `fold`
 - **0.0.1** &mdash; *2014-12-20* &mdash; Initial release
 
 ## Contributing
