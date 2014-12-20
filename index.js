@@ -88,7 +88,7 @@ nil.fold = function nilFold(x /*, f */) {
 };
 
 /**
-  - *.head : () → a
+  - *.head : () → a* &mdash;  Extract the first element of a sequence, which must be non-empty.
 */
 nil.head = function nilHead() {
   throw new Error("nil.head");

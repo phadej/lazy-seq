@@ -61,7 +61,7 @@ This package is originally made to optimise shrink operations in [jsverify](http
     ```
 
 
-- *.head : () → a
+- *.head : () → a* &mdash;  Extract the first element of a sequence, which must be non-empty.
 
 
 - *.tail : () → Seq a* &mdash; Return the tail of the sequence.
