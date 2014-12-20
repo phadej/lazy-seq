@@ -12,7 +12,7 @@ JSCS=$(BINDIR)/jscs
 DAVID=$(BINDIR)/david
 LJS=$(BINDIR)/ljs
 
-SRC=lib test
+SRC=index.js test
 
 test : jshint eslint jscs mocha istanbul david
 
