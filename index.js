@@ -49,7 +49,7 @@ var assert = require("assert");
 /**
   - *nil : Seq a* &mdash; Empty sequence.
 
-  - *cons : (a, Array a | Seq a | () -> (Array a | Seq a)) → Seq a* : Cons a value to the front of a sequence (list or thunk).
+  - *cons : (head : a, tail : Array a | Seq a | () → Array a | () → gSeq a) → Seq a* : Cons a value to the front of a sequence (list or thunk).
 */
 var nil = {};
 
