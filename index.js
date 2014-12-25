@@ -46,7 +46,11 @@
 
 var assert = require("assert");
 
-// nil is a unique value
+/**
+  - *nil : Seq a* &mdash; Empty sequence.
+
+  - *cons : (a, Array a | Seq a | () -> (Array a | Seq a)) → Seq a* : Cons a value to the front of a sequence (list or thunk).
+*/
 var nil = {};
 
 /**
@@ -197,7 +201,10 @@ Cons.prototype.tail = function consTail() {
 // Force tail to whnf.
 function lazyConsForce() {
   /* jshint validthis:true */
-  this.tailValue = this.tailFn();
+  var val = this.tailFn();
+  /* eslint-disable no-use-before-define */
+  this.tailValue = Array.isArray(val) ? fromArray(val) : val;
+  /* eslint-enable no-use-before-define */
 
   delete this.tail;
   delete this.force;
@@ -225,11 +232,11 @@ function cons(head, tail) {
   if (typeof tail === "function") {
     return delay(new Cons(head), tail);
   } else if (Array.isArray(tail)) {
-    /* eslint-disable no-use-before-define */
-    return cons(head, function () {
+    return delay(cons(head), function () {
+      /* eslint-disable no-use-before-define */
       return fromArray(tail);
+      /* eslint-enable no-use-before-define */
     });
-    /* eslint-enable no-use-before-define */
   } else {
     return new Cons(head, tail);
   }
