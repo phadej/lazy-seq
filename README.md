@@ -40,18 +40,17 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 ## API
 
+- *nil : Seq a* &mdash; Empty sequence.
+
+- *cons : (a, Array a | Seq a | () -> (Array a | Seq a)) → Seq a* : Cons a value to the front of a sequence (list or thunk).
 
 - *.isNil : Boolean* &mdash; Constant time check, whether the sequence is empty.
 
-
 - *.toString : () → String* &mdash; String representation. Doesn't force the tail.
-
 
 - *.length : () → Nat* &mdash; Return the length of the sequene. Forces the structure.
 
-
 - *.toArray : () → Array a* &mdash; Convert the sequence to JavaScript array.
-
 
 - *.fold : (z : b, f : (a, () → b) → b) → b* &mdash; Fold from right.
 
@@ -60,9 +59,7 @@ This package is originally made to optimise shrink operations in [jsverify](http
     fold (cons h t) x f = f x (fold t x f)
     ```
 
-
 - *.head : () → a* &mdash;  Extract the first element of a sequence, which must be non-empty.
-
 
 - *.tail : () → Seq a* &mdash; Return the tail of the sequence.
 
@@ -71,30 +68,21 @@ This package is originally made to optimise shrink operations in [jsverify](http
     tail (cons h t) = t
     ```
 
-
 - *.nth : (n : Nat) → a* &mdash; Return nth value of the sequence.
-
 
 - *.take : (n : Nat) → Seq a* &mdash; Take `n` first elements of the sequence.
 
-
 - *.drop : (n : Nat) → Seq a* &mdash; Drop `n` first elements of the sequence.
-
 
 - *.map : (f : a → b) : Seq b* &mdash; The sequence obtained by applying `f` to each element of the original sequence.
 
-
 - *.append : (ys : Seq a | Array a) : Seq a* &mdash; Append `ys` sequence.
-
 
 - *fromArray: (arr : Array a) → Seq a* &mdash; Convert a JavaScript array into lazy sequence.
 
-
 - *iterate : (x : a, f : a → a) → Seq a* &mdash; Create an infinite sequence of repeated applications of `f` to `x`: *x, f(x), f(f(x))&hellip;*.
 
-
 - *fold : (seq : Seq a | Array a, z : b, f : (a, () → b) → b) : b* &mdash; polymorphic version of fold. Works with arrays too.
-
 
 ## Release History
 

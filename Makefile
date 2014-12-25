@@ -35,7 +35,7 @@ istanbul :
 ljs : README.md
 
 README.md :
-	$(LJS) -c false -o README.md index.js
+	$(LJS) --no-code -o README.md index.js
 
 david :
 	$(DAVID)
