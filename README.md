@@ -80,7 +80,7 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 - *fromArray: (arr : Array a) → Seq a* &mdash; Convert a JavaScript array into lazy sequence.
 
-- *append : (xs : Array a | Seq a, ys : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
+- *append : (xs... : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
 
 - *iterate : (x : a, f : a → a) → Seq a* &mdash; Create an infinite sequence of repeated applications of `f` to `x`: *x, f(x), f(f(x))&hellip;*.
 
@@ -88,6 +88,7 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 ## Release History
 
+- **0.1.0** &mdash; *2015-04-21* &mdash; `append`
 - **0.0.2** &mdash; *2014-12-20* &mdash; Fixed `fold`
 - **0.0.1** &mdash; *2014-12-20* &mdash; Initial release
 
