@@ -42,7 +42,7 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 - *nil : Seq a* &mdash; Empty sequence.
 
-- *cons : (head : a, tail : Array a | Seq a | () → Array a | () → gSeq a) → Seq a* : Cons a value to the front of a sequence (list or thunk).
+- *cons : (head : a, tail : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Cons a value to the front of a sequence (list or thunk).
 
 - *.isNil : Boolean* &mdash; Constant time check, whether the sequence is empty.
 
@@ -79,6 +79,8 @@ This package is originally made to optimise shrink operations in [jsverify](http
 - *.append : (ys : Seq a | Array a) : Seq a* &mdash; Append `ys` sequence.
 
 - *fromArray: (arr : Array a) → Seq a* &mdash; Convert a JavaScript array into lazy sequence.
+
+- *append : (xs : Array a | Seq a, ys : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
 
 - *iterate : (x : a, f : a → a) → Seq a* &mdash; Create an infinite sequence of repeated applications of `f` to `x`: *x, f(x), f(f(x))&hellip;*.
 

@@ -49,7 +49,7 @@ var assert = require("assert");
 /**
   - *nil : Seq a* &mdash; Empty sequence.
 
-  - *cons : (head : a, tail : Array a | Seq a | () → Array a | () → gSeq a) → Seq a* : Cons a value to the front of a sequence (list or thunk).
+  - *cons : (head : a, tail : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Cons a value to the front of a sequence (list or thunk).
 */
 var nil = {};
 
@@ -146,6 +146,10 @@ nil.map = function (f) {
   - *.append : (ys : Seq a | Array a) : Seq a* &mdash; Append `ys` sequence.
 */
 nil.append = function (seq) {
+  if (typeof seq === "function") {
+    seq = seq();
+  }
+
   if (Array.isArray(seq)) {
     /* eslint-disable no-use-before-define */
     return fromArray(seq);
@@ -271,6 +275,7 @@ Cons.prototype.map = function consMap(f) {
 };
 
 Cons.prototype.append = function consAppend(seq) {
+  // Short circuit decidable: (++ []) ≡ id
   if (seq === nil || (Array.isArray(seq) && seq.length === 0)) {
     return this;
   }
@@ -297,6 +302,17 @@ function fromArrayIter(arr, n) {
 function fromArray(arr) {
   assert(Array.isArray(arr));
   return fromArrayIter(arr, 0);
+}
+
+/**
+  - *append : (xs : Array a | Seq a, ys : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
+*/
+function append(xs, ys) {
+  if (Array.isArray(xs)) {
+    xs = fromArray(xs);
+  }
+
+  return xs.append(ys);
 }
 
 /**
@@ -332,6 +348,7 @@ function fold(list, z, f) {
 module.exports = {
   nil: nil,
   cons: cons,
+  append: append,
   fromArray: fromArray,
   iterate: iterate,
   fold: fold,
