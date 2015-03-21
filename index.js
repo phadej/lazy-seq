@@ -218,14 +218,14 @@ function lazyConsTail() {
   return this.tailValue;
 }
 
-function delay(cons, tail) {
+function delay(head, tail) {
   assert(typeof tail === "function");
 
-  cons.tailFn = tail;
-  cons.tail = lazyConsTail;
+  head.tailFn = tail;
+  head.tail = lazyConsTail;
 
-  cons.force = lazyConsForce;
-  return cons;
+  head.force = lazyConsForce;
+  return head;
 }
 
 function cons(head, tail) {
