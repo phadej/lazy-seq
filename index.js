@@ -305,14 +305,14 @@ function fromArray(arr) {
 }
 
 /**
-  - *append : (xs : Array a | Seq a, ys : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
+  - *append : (xs... : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
 */
-function append(xs, ys) {
-  if (Array.isArray(xs)) {
-    xs = fromArray(xs);
+function append() {
+  var acc = nil;
+  for (var i = 0; i < arguments.length; i++) {
+    acc = acc.append(arguments[i]);
   }
-
-  return xs.append(ys);
+  return acc;
 }
 
 /**
