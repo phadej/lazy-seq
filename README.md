@@ -80,7 +80,17 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 - *.filter : (p : a -> bool) : Seq a* &mdash; filter using `p` predicate.
 
+- *.every : (p = identity: a -> b) : b | true &mdash; return first falsy value in the sequence, true otherwise. *N.B.* behaves slightly differently from `Array::every`.
+
+- *.some : (p = identity: a -> b) : b | false &mdash; return first truthy value in the sequence, false otherwise. *N.B.* behaves slightly differently from `Array::some`.
+
+- *.contains : (x : a) : bool &mdash; Returns `true` if `x` is in the sequence.
+
+- *.containsNot : (x : a) : bool &mdash; Returns `true` if `x` is not in the sequence.
+
 - *fromArray: (arr : Array a) → Seq a* &mdash; Convert a JavaScript array into lazy sequence.
+
+- *singleton: (x : a) → Seq a* &mdash; Create a singleton sequence.
 
 - *append : (xs... : Array a | Seq a | () → Array a | () → Seq a) → Seq a* : Append one sequence-like to another.
 
@@ -90,6 +100,10 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 ## Release History
 
+- **1.0.0** &mdash; *2015-07-28* &mdash; Stable
+  - Consider stable
+  - `singleton` constructure
+  - `.contains`, `.containsNot`, `.every` and `.some` methods
 - **0.2.0** &mdash; *2015-04-21* &mdash; `filter`
 - **0.1.0** &mdash; *2015-03-21* &mdash; `append`
 - **0.0.2** &mdash; *2014-12-20* &mdash; Fixed `fold`
