@@ -166,6 +166,20 @@ nil.filter = function () {
   return nil;
 };
 
+/**
+  - *.every : (p = identity: a -> b) : b | true &mdash; return first falsy value in the sequence, true otherwise. *N.B.* behaves slightly differently from `Array::every`.
+*/
+nil.every = function () {
+  return true;
+};
+
+/**
+  - *.some : (p = identity: a -> b) : b | false &mdash; return first truthy value in the sequence, false otherwise. *N.B.* behaves slightly differently from `Array::some`.
+*/
+nil.some = function () {
+  return false;
+};
+
 // Default cons values are with strict semantics
 function Cons(head, tail) {
   this.headValue = head;
@@ -301,6 +315,30 @@ Cons.prototype.filter = function consFilter(p) {
     });
   } else {
     return that.tail().filter(p);
+  }
+};
+
+Cons.prototype.every = function consEvery(p) {
+  p = p || function (x) { return x; };
+  assert(typeof p === "function");
+  var that = this;
+  var pHead = p(that.headValue);
+  if (!pHead) {
+    return pHead;
+  } else {
+    return that.tail().every(p);
+  }
+};
+
+Cons.prototype.some = function consSome(p) {
+  p = p || function (x) { return x; };
+  assert(typeof p === "function");
+  var that = this;
+  var pHead = p(that.headValue);
+  if (pHead) {
+    return pHead;
+  } else {
+    return that.tail().some(p);
   }
 };
 
