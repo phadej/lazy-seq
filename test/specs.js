@@ -16,7 +16,7 @@ function fromSeq(seq) {
 function seqArbitrary(arb) {
   return {
     generator: jsc.generator.array(arb.generator).map(toSeq),
-    shrink: jsc.shrink.array(arb.shrink).isomap(toSeq, fromSeq),
+    shrink: jsc.shrink.array(arb.shrink).smap(toSeq, fromSeq),
     show: jsc.show.def,
   };
 }
