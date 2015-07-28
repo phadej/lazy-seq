@@ -180,6 +180,20 @@ nil.some = function () {
   return false;
 };
 
+/**
+  - *.contains : (x : a) : bool &mdash; Returns `true` if `x` is in the sequence.
+*/
+nil.contains = function () {
+  return false;
+};
+
+/**
+  - *.containsNot : (x : a) : bool &mdash; Returns `true` if `x` is not in the sequence.
+*/
+nil.containsNot = function () {
+  return true;
+};
+
 // Default cons values are with strict semantics
 function Cons(head, tail) {
   this.headValue = head;
@@ -342,6 +356,24 @@ Cons.prototype.some = function consSome(p) {
   }
 };
 
+Cons.prototype.contains = function consContains(x) {
+  var that = this;
+  if (x === that.headValue) {
+    return true;
+  } else {
+    return that.tail().contains(x);
+  }
+};
+
+Cons.prototype.containsNot = function consContainsNot(x) {
+  var that = this;
+  if (x === that.headValue) {
+    return false;
+  } else {
+    return that.tail().containsNot(x);
+  }
+};
+
 // Constructors
 /**
   - *fromArray: (arr : Array a) → Seq a* &mdash; Convert a JavaScript array into lazy sequence.
@@ -359,6 +391,13 @@ function fromArrayIter(arr, n) {
 function fromArray(arr) {
   assert(Array.isArray(arr));
   return fromArrayIter(arr, 0);
+}
+
+/**
+  - *singleton: (x : a) → Seq a* &mdash; Create a singleton sequence.
+*/
+function singleton(x) {
+  return fromArray([x]);
 }
 
 /**
@@ -407,6 +446,7 @@ module.exports = {
   cons: cons,
   append: append,
   fromArray: fromArray,
+  singleton: singleton,
   iterate: iterate,
   fold: fold,
 };
