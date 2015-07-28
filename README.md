@@ -80,13 +80,13 @@ This package is originally made to optimise shrink operations in [jsverify](http
 
 - *.filter : (p : a -> bool) : Seq a* &mdash; filter using `p` predicate.
 
-- *.every : (p = identity: a -> b) : b | true &mdash; return first falsy value in the sequence, true otherwise. *N.B.* behaves slightly differently from `Array::every`.
+- *.every : (p = identity: a -> b) : b | true* &mdash; return first falsy value in the sequence, true otherwise. *N.B.* behaves slightly differently from `Array::every`.
 
-- *.some : (p = identity: a -> b) : b | false &mdash; return first truthy value in the sequence, false otherwise. *N.B.* behaves slightly differently from `Array::some`.
+- *.some : (p = identity: a -> b) : b | false* &mdash; return first truthy value in the sequence, false otherwise. *N.B.* behaves slightly differently from `Array::some`.
 
-- *.contains : (x : a) : bool &mdash; Returns `true` if `x` is in the sequence.
+- *.contains : (x : a) : bool* &mdash; Returns `true` if `x` is in the sequence.
 
-- *.containsNot : (x : a) : bool &mdash; Returns `true` if `x` is not in the sequence.
+- *.containsNot : (x : a) : bool* &mdash; Returns `true` if `x` is not in the sequence.
 
 - *fromArray: (arr : Array a) → Seq a* &mdash; Convert a JavaScript array into lazy sequence.
 

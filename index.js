@@ -167,28 +167,28 @@ nil.filter = function () {
 };
 
 /**
-  - *.every : (p = identity: a -> b) : b | true &mdash; return first falsy value in the sequence, true otherwise. *N.B.* behaves slightly differently from `Array::every`.
+  - *.every : (p = identity: a -> b) : b | true* &mdash; return first falsy value in the sequence, true otherwise. *N.B.* behaves slightly differently from `Array::every`.
 */
 nil.every = function () {
   return true;
 };
 
 /**
-  - *.some : (p = identity: a -> b) : b | false &mdash; return first truthy value in the sequence, false otherwise. *N.B.* behaves slightly differently from `Array::some`.
+  - *.some : (p = identity: a -> b) : b | false* &mdash; return first truthy value in the sequence, false otherwise. *N.B.* behaves slightly differently from `Array::some`.
 */
 nil.some = function () {
   return false;
 };
 
 /**
-  - *.contains : (x : a) : bool &mdash; Returns `true` if `x` is in the sequence.
+  - *.contains : (x : a) : bool* &mdash; Returns `true` if `x` is in the sequence.
 */
 nil.contains = function () {
   return false;
 };
 
 /**
-  - *.containsNot : (x : a) : bool &mdash; Returns `true` if `x` is not in the sequence.
+  - *.containsNot : (x : a) : bool* &mdash; Returns `true` if `x` is not in the sequence.
 */
 nil.containsNot = function () {
   return true;
