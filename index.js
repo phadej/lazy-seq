@@ -87,7 +87,7 @@ nil.toArray = function nilToArray() {
       fold (cons h t) x f = f x (fold t x f)
       ```
 */
-nil.fold = function nilFold(x /*, f */) {
+nil.fold = function nilFold(x /* , f */) {
   return x;
 };
 
